@@ -1,11 +1,70 @@
-// Emerson.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+// Emerson.cpp
 //
 
 #include <iostream>
+#include <string>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+class EquipoFutbol {
+private:
+	string nombre;
+	string ciudad;
+	string estadio;
+	string colores;
+
+public:
+	EquipoFutbol(string nombre, string ciudad, string estadio, string colores) {
+		this->nombre = nombre;
+		this->ciudad = ciudad;
+		this->estadio = estadio;
+		this->colores = colores;
+	}
+	void mostrarDatos() {
+		cout << "Nombre: " << nombre << endl;
+		cout << "Ciudad: " << ciudad << endl;
+		cout << "Estadio: " << estadio << endl;
+		cout << "Colores: " << colores << endl;
+	}
+};
+
+class Jugador : public EquipoFutbol {
+private:
+	string nombre;
+	string apellido;
+	int edad;
+	string posicion;
+	int numero;
+
+public:
+	Jugador(string equipoNombre, string equipoCiudad, string equipoEstadio, string equipoColores, string nombre, string apellido, int edad, string posicion, int numero)
+		: EquipoFutbol(equipoNombre, equipoCiudad, equipoEstadio, equipoColores), nombre(nombre), apellido(apellido), edad(edad), posicion(posicion), numero(numero) {
+	}
+
+	void mostrarDatosJugador() {
+		mostrarDatos();
+		cout << "Nombre del Jugador: " << nombre << endl;
+		cout << "Apellido: " << apellido << endl;
+		cout << "Edad: " << edad << endl;
+		cout << "Posición: " << posicion << endl;
+		cout << "Número: " << numero << endl;
+	}
+};
+
+int main() {
+
+	EquipoFutbol equipo("Barcelona", "Barcelona", "Camp Nou", "Azul y Grana");
+	cout << "Datos del equipo:" << endl;
+	equipo.mostrarDatos();
+
+	cout << "\n---\n" << endl;
+
+	
+	Jugador jugador("Barcelona", "Barcelona", "Camp Nou", "Azul y Grana",
+		"Lionel", "Messi", 34, "Delantero", 10);
+	cout << "Datos del jugador:" << endl;
+	jugador.mostrarDatosJugador();
+
+	return 0;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
