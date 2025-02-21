@@ -1,64 +1,124 @@
-//Hola esta es una prueba
 #include <iostream>
-#include <string>
+
 using namespace std;
 
-// Clase padre: Emperador
-class Emperador {
-protected:
-    string nombre;
-    int edad;
+
+class Emperador 
+{
+private: 
+	string nombre;
+	int edad;
 
 public:
-    Emperador(string nombre, int edad) : nombre(nombre), edad(edad) {}
+	Emperador(string nom, int ed): nombre(nom), edad(ed){}
 
-    void mostrarInfo() {
-        cout << "Nombre: " << nombre << "\nEdad: " << edad << endl;
-    }
+	void MostrarInfo()
+	{
+		cout << "Nombre:" << nombre << "edad:" <<  edad << endl;
+	}
+
 };
 
-// Clase hija: Legion
-class Legion : public Emperador {
-protected:
-    string primarca;
-    string lealtad;
+class Legion : public Emperador
+{
+protected: 
+	string primarca;
+	string lealtad;
 
-public:
-    Legion(string nombre, int edad, string primarca, string lealtad)
-        : Emperador(nombre, edad), primarca(primarca), lealtad(lealtad) {
-    }
+public: 
+	Legion(string nom, int ed, string prim, string leal) : Emperador(nom, ed), primarca(prim), lealtad(leal) {}
 
-    void mostrarLegion() {
-        mostrarInfo();
-        cout << "Primarca: " << primarca << "\nLealtad: " << lealtad << endl;
-    }
+	void Mostrarlegion()
+	{
+		cout << "Primarca:" << primarca << "\nLealtad:" << lealtad << endl;
+
+	}
+
 };
 
-// Clase derivada: Loyalista
 class Loyalista : public Legion {
 public:
-    Loyalista(string primarca)
-        : Legion("Legion Loyalista", 10000, primarca, "Imperio") {
-    }
+	Loyalista(string primarca)
+		: Legion("Legion Loyalista", 10000, primarca, "Imperio") {
+	}
 };
 
-// Clase derivada: Hereje
 class Hereje : public Legion {
 public:
-    Hereje(string primarca)
-        : Legion("Legion Hereje", 10000, primarca, "Caos") {
-    }
+	Hereje(string primarca)
+		: Legion("Legion Hereje", 10000, primarca, "Caos") {
+	}
 };
 
-int main() {
-    Loyalista ultramarines("Roboute Guilliman");
-    Hereje traidores("Horus Lupercal");
+class Traidor : public Legion{
+public:
+	Traidor(string primarca)
+		: Legion("Legion Traidora", 10000, primarca, "Caos") {
+}
+};
 
-    cout << "=== Lealistas ===" << endl;
-    ultramarines.mostrarLegion();
+class Exiliado : public Legion {
+public:
+	Exiliado(string primarca)
+		: Legion("Legion Exiliada", 10000, primarca, "Ninguna") {
+	}
+};
 
-    cout << "\n=== Herejes ===" << endl;
-    traidores.mostrarLegion();
 
-    return 0;
+class Renegado : public Legion {
+public:
+	Renegado(string primarca)
+		: Legion("Legion Renegada", 10000, primarca, "Independiente") {
+	}
+};
+
+
+class PrimarcaPerdido : public Legion {
+public:
+	PrimarcaPerdido()
+		: Legion("Legion Desconocida", 10000, "Desconocido", "Ninguna") {
+	}
+};
+
+
+class Desconocido : public Legion {
+public:
+	Desconocido()
+		: Legion("Legion Misteriosa", 10000, "Desconocido", "Desconocido") {
+	}
+};
+
+int main()
+{
+
+	Loyalista ultramarines("Roboute Guilliman");	
+	Hereje traidores("Horus Lupercal");
+	Traidor traidor("Fulgrim");	
+	Exiliado exiliado("Lion El'Jonson");
+	Renegado renegado("Huron Blackheart");	
+	PrimarcaPerdido perdido;	
+	Desconocido desconocido;	
+
+	cout << "=== Lealistas ===" << endl;
+	ultramarines.Mostrarlegion();
+
+	cout << "\n=== Herejes ===" << endl;
+	traidores.Mostrarlegion();	
+
+	cout << "\n=== Traidor ===" << endl;
+	traidor.Mostrarlegion();
+
+	cout << "\n=== Exiliado ===" << endl;
+	exiliado.Mostrarlegion();
+
+	cout << "\n=== Renegado ===" << endl;
+	renegado.Mostrarlegion();
+
+	cout << "\n=== Primarca Perdido ===" << endl;
+	perdido.Mostrarlegion();	
+
+	cout << "\n=== Desconocido ===" << endl;
+	desconocido.Mostrarlegion();	
+
+	return 0;
 }
