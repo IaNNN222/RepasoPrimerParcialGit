@@ -2,10 +2,45 @@
 //
 
 #include <iostream>
+#include <iostream>
+using namespace std;
+
+class SuperHeroe
+{
+
+private:
+	string nombre;
+	string poder;
+	int edad;
+
+public:
+	SuperHeroe(string n, string p, int e) {
+		nombre = n;
+		poder = p;
+		edad = e;
+	
+		void mostrarDatos() {
+			cout << "Nombre: " << nombre << endl;
+			cout << "Poder: " << poder << endl;
+			cout << "Edad: " << edad << endl;
+		}
+
+		void usarPoder() {
+			cout << "Usando poder: " << poder << endl;
+		}
+};
+
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	SuperHeroe heroe1("Superman", "Volar", 30);
+
+	SuperHeroe heroe2("Batman", "Dinero", 35);
+
+	heroe1.usarpoer();
+	return 0;
+   
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
