@@ -2,46 +2,83 @@
 //
 
 #include <iostream>
-#include <iostream>
 using namespace std;
 
-class SuperHeroe
-{
-
+class SuperHeroe {
 private:
-	string nombre;
-	string poder;
-	int edad;
+    string nombre;
+    string poder;
+    int edad;
 
 public:
-	SuperHeroe(string n, string p, int e) {
-		nombre = n;
-		poder = p;
-		edad = e;
-	
-		void mostrarDatos() {
-			cout << "Nombre: " << nombre << endl;
-			cout << "Poder: " << poder << endl;
-			cout << "Edad: " << edad << endl;
-		}
+    SuperHeroe(string n, string p, int e) : nombre(n), poder(p), edad(e) {}
 
-		void usarPoder() {
-			cout << "Usando poder: " << poder << endl;
-		}
+    void mostrarDatos() {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Poder: " << poder << endl;
+        cout << "Edad: " << edad << endl;
+    }
+
+    void usarPoder() {
+        cout << nombre << " está usando su poder: " << poder << "!" << endl;
+    }
 };
 
+// Subclase Héroe Clásico
+class HeroeClasico : public SuperHeroe {
+public:
+    HeroeClasico(string n, string p, int e) : SuperHeroe(n, p, e) {}
 
+    void lucharPorJusticia() {
+        cout << "¡" << "Luchando por la justicia!" << endl;
+    }
+};
 
-int main()
-{
-	SuperHeroe heroe1("Superman", "Volar", 30);
+// Subclase Villano
+class Villano : public SuperHeroe {
+public:
+    Villano(string n, string p, int e) : SuperHeroe(n, p, e) {}
 
-	SuperHeroe heroe2("Batman", "Dinero", 35);
+    void hacerMaldades() {
+        cout << "¡" << "Tramando un plan maligno!" << endl;
+    }
+};
 
-	heroe1.usarpoer();
-	return 0;
-   
+// Subclase Anti-Héroe
+class AntiHeroe : public SuperHeroe {
+public:
+    AntiHeroe(string n, string p, int e) : SuperHeroe(n, p, e) {}
+
+    void actuarPorCuentaPropia() {
+        cout << "¡" << "Haciendo justicia a su manera!" << endl;
+    }
+};
+
+int main() {
+    HeroeClasico heroe1("Superman", "Volar", 30);
+    Villano villano1("Joker", "Manipulación", 40);
+    AntiHeroe antiheroe1("Deadpool", "Regeneración", 35);
+
+    // Mostrando datos y acciones
+    heroe1.mostrarDatos();
+    heroe1.usarPoder();
+    heroe1.lucharPorJusticia();
+
+    cout << endl;
+
+    villano1.mostrarDatos();
+    villano1.usarPoder();
+    villano1.hacerMaldades();
+
+    cout << endl;
+
+    antiheroe1.mostrarDatos();
+    antiheroe1.usarPoder();
+    antiheroe1.actuarPorCuentaPropia();
+
+    return 0;
 }
+
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
