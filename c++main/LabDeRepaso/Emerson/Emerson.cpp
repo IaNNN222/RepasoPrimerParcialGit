@@ -45,8 +45,8 @@ public:
 		cout << "Nombre del Jugador: " << nombre << endl;
 		cout << "Apellido: " << apellido << endl;
 		cout << "Edad: " << edad << endl;
-		cout << "Posición: " << posicion << endl;
-		cout << "Número: " << numero << endl;
+		cout << "Posicion: " << posicion << endl;
+		cout << "Numero: " << numero << endl;
 	}
 };
 
